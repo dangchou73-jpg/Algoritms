@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AlgoLearn - Belajar Algoritma</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    line-height: 1.7;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 270px;
+    height: 100vh;
+    background: #111827;
+    border-right: 1px solid #263244;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #60a5fa;
+    margin-bottom: 5px;
+}
+
+.logo span {
+    color: #a78bfa;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 9px 12px;
+    margin: 3px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: #1e293b;
+    color: white;
+    transform: translateX(3px);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    margin-left: 270px;
+    padding: 35px;
+    max-width: 1400px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #172554, #312e81);
+    border: 1px solid #4338ca;
+    border-radius: 20px;
+    padding: 45px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #c7d2fe;
+    max-width: 750px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #1e40af;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section {
+    margin-bottom: 45px;
+    scroll-margin-top: 25px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #93c5fd;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 21px;
+    color: #c4b5fd;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    color: #7dd3fc;
+    margin-top: 15px;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.card {
+    background: #172033;
+    border: 1px solid #29364d;
+    border-radius: 14px;
+    padding: 22px;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #60a5fa;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.paradigm {
+    border-left: 4px solid #60a5fa;
+}
+
+.keyword {
+    color: #67e8f9;
+    font-weight: bold;
+}
+
+/* =========================
+   CODE
+========================= */
+
+pre {
+    background: #020617;
+    border: 1px solid #263244;
+    border-radius: 10px;
+    padding: 18px;
+    overflow-x: auto;
+    color: #d1d5db;
+    margin: 15px 0;
+}
+
+code {
+    font-family: Consolas, monospace;
+}
+
+.inline-code {
+    background: #020617;
+    padding: 2px 6px;
+    border-radius: 5px;
+    color: #67e8f9;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #334155;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #1e293b;
+    color: #93c5fd;
+}
+
+tr:nth-child(even) {
+    background: #111827;
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info {
+    background: #172554;
+    border-left: 4px solid #3b82f6;
+    padding: 17px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.warning {
+    background: #422006;
+    border-left: 4px solid #f59e0b;
+    padding: 17px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.success {
+    background: #052e16;
+    border-left: 4px solid #22c55e;
+    padding: 17px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: white;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #60a5fa;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button.secondary {
+    background: #374151;
+}
+
+button.danger {
+    background: #991b1b;
+}
+
+/* =========================
+   8 QUEENS
+========================= */
+
+.chess-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 45px);
+    grid-template-rows: repeat(8, 45px);
+    border: 4px solid #64748b;
+}
+
+.square {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.square.light {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.square.dark {
+    background: #64748b;
+    color: white;
+}
+
+.square.queen {
+    color: #ef4444;
+}
+
+/* =========================
+   ROUTE
+========================= */
+
+.route-board {
+    display: grid;
+    grid-template-columns: repeat(8, 38px);
+    gap: 3px;
+    margin: 20px 0;
+}
+
+.route-cell {
+    width: 38px;
+    height: 38px;
+    background: #334155;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.route-cell.wall {
+    background: #020617;
+}
+
+.route-cell.start {
+    background: #22c55e;
+}
+
+.route-cell.end {
+    background: #ef4444;
+}
+
+.route-cell.path {
+    background: #facc15;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-question {
+    margin: 20px 0;
+    padding: 18px;
+    background: #172033;
+    border-radius: 10px;
+}
+
+.quiz-option {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    background: #1e293b;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    background: #334155;
+}
+
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 270px;
+    right: 0;
+    height: 4px;
+    background: #1e293b;
+    z-index: 2000;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #60a5fa;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu {
+    display: none;
+}
+
+@media(max-width: 800px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.active {
+        display: block;
+        width: 260px;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .progress-container {
+        left: 0;
+    }
+
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        right: 15px;
+        top: 15px;
+        z-index: 3000;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .chessboard {
+        grid-template-columns: repeat(8, 38px);
+        grid-template-rows: repeat(8, 38px);
+    }
+
+    .square {
+        width: 38px;
+        height: 38px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress-container">
+    <div class="progress" id="progress"></div>
+</div>
+
+<button class="mobile-menu" onclick="toggleMenu()">☰</button>
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<nav class="sidebar" id="sidebar">
+
+    <div class="logo">Algo<span>Learn</span></div>
+
+    <div class="subtitle">
+        Website belajar algoritma
+    </div>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari materi..."
+            onkeyup="searchMaterial()"
+        >
+    </div>
+
+    <a href="#home">🏠 Beranda</a>
+    <a href="#problem">1. Problem Solving</a>
+    <a href="#thinking">2. Computational Thinking</a>
+    <a href="#algorithm">3. Konsep Algoritma</a>
+    <a href="#representation">4. Representasi Algoritma</a>
+    <a href="#structure">5. Struktur Algoritma</a>
+    <a href="#programming">6. Dasar Pemrograman</a>
+    <a href="#data">7. Struktur Data</a>
+    <a href="#function">8. Fungsi & Prosedur</a>
+
+    <hr>
+
+    <a href="#bruteforce">9. Brute Force</a>
+    <a href="#divide">10. Divide & Conquer</a>
+    <a href="#greedy">11. Greedy</a>
+    <a href="#dp">12. Dynamic Programming</a>
+    <a href="#backtracking">13. Backtracking</a>
+
+    <a href="#searching">14. Searching</a>
+    <a href="#sorting">15. Sorting</a>
+    <a href="#recursion">16. Rekursi</a>
+
+    <a href="#efficiency">17. Algoritma Efisien</a>
+    <a href="#eightqueens">18. 8 Queens</a>
+    <a href="#route">19. Route / Shortest Path</a>
+
+    <hr>
+
+    <a href="#comparison">20. Perbandingan</a>
+    <a href="#quiz">21. Kuis</a>
+
+</nav>
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<span class="badge">INFORMATIKA • ALGORITMA</span>
+
+<h1>AlgoLearn</h1>
+
+<p>
+Website pembelajaran algoritma dari dasar sampai konsep algoritma
+yang lebih efisien. Pelajari cara berpikir, merancang solusi,
+menganalisis algoritma, sampai mencoba simulasi 8 Queens dan
+pencarian rute.
+</p>
+
+</div>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>Problem Solving</h3>
+<p>
+Belajar mengubah masalah menjadi langkah penyelesaian yang sistematis.
+</p>
+</div>
+
+<div class="card">
+<h3>5 Paradigma</h3>
+<p>
+Brute Force, Divide and Conquer, Greedy, Dynamic Programming,
+dan Backtracking.
+</p>
+</div>
+
+<div class="card">
+<h3>Efisiensi</h3>
+<p>
+Mengenal kompleksitas waktu, kompleksitas ruang, dan Big-O.
+</p>
+</div>
+
+<div class="card">
+<h3>Simulasi</h3>
+<p>
+Coba sendiri 8 Queens dan pencarian rute sederhana.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROBLEM SOLVING -->
+
+<section id="problem">
+
+<h2>1. Dasar Pemecahan Masalah</h2>
+
+<p>
+Sebelum membuat algoritma, masalah harus dipahami terlebih dahulu.
+Algoritma bukan sekadar menulis kode. Kode hanyalah cara
+menginstruksikan komputer untuk menjalankan algoritma.
+</p>
+
+<h3>Submateri</h3>
+
+<ul>
+<li>Identifikasi masalah</li>
+<li>Menentukan tujuan</li>
+<li>Menentukan input</li>
+<li>Menentukan proses</li>
+<li>Menentukan output</li>
+<li>Analisis kebutuhan</li>
+<li>Menyusun solusi</li>
+<li>Menguji solusi</li>
+<li>Mengevaluasi solusi</li>
+</ul>
+
+<h3>Konsep IPO</h3>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>Input</h3>
+<p>Data yang diberikan kepada algoritma.</p>
+</div>
+
+<div class="card">
+<h3>Process</h3>
+<p>Operasi atau langkah yang dilakukan terhadap data.</p>
+</div>
+
+<div class="card">
+<h3>Output</h3>
+<p>Hasil yang diperoleh setelah proses.</p>
+</div>
+
+</div>
+
+<h3>Contoh</h3>
+
+<div class="info">
+
+<strong>Masalah:</strong> Menghitung luas persegi.
+
+<br><br>
+
+Input:
+sisi
+
+<br>
+
+Process:
+sisi × sisi
+
+<br>
+
+Output:
+luas
+
+</div>
+
+</section>
+
+<!-- COMPUTATIONAL THINKING -->
+
+<section id="thinking">
+
+<h2>2. Computational Thinking</h2>
+
+<p>
+Computational Thinking adalah cara berpikir sistematis untuk
+memecahkan masalah sehingga solusi dapat dilakukan manusia maupun
+komputer.
+</p>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>1. Dekomposisi</h3>
+<p>
+Memecah masalah besar menjadi bagian-bagian yang lebih kecil.
+</p>
+
+<p>
+Contoh membuat game:
+</p>
+
+<ul>
+<li>Karakter</li>
+<li>Musuh</li>
+<li>Map</li>
+<li>Skor</li>
+<li>Menu</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>2. Pengenalan Pola</h3>
+<p>
+Mencari kesamaan atau pola dari data atau masalah.
+</p>
+
+<p>
+Contoh:
+2, 4, 6, 8, 10 merupakan bilangan genap.
+</p>
+</div>
+
+<div class="card">
+<h3>3. Abstraksi</h3>
+<p>
+Mengambil informasi penting dan mengabaikan informasi yang tidak
+diperlukan.
+</p>
+</div>
+
+<div class="card">
+<h3>4. Algoritma</h3>
+<p>
+Menyusun langkah-langkah sistematis untuk menyelesaikan masalah.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ALGORITHM -->
+
+<section id="algorithm">
+
+<h2>3. Konsep Dasar Algoritma</h2>
+
+<h3>Pengertian</h3>
+
+<p>
+Algoritma adalah urutan langkah yang logis, sistematis, jelas,
+dan terbatas untuk menyelesaikan suatu masalah.
+</p>
+
+<h3>Ciri-ciri algoritma</h3>
+
+<ul>
+<li>Memiliki input.</li>
+<li>Menghasilkan output.</li>
+<li>Langkah-langkahnya jelas.</li>
+<li>Memiliki akhir.</li>
+<li>Efektif dan dapat dilaksanakan.</li>
+<li>Tidak ambigu.</li>
+</ul>
+
+<h3>Contoh algoritma sederhana</h3>
+
+<pre><code>Mulai
+Input sisi
+luas = sisi × sisi
+Tampilkan luas
+Selesai</code></pre>
+
+</section>
+
+<!-- REPRESENTATION -->
+
+<section id="representation">
+
+<h2>4. Bentuk Penulisan Algoritma</h2>
+
+<h3>Bahasa Natural</h3>
+
+<p>
+Algoritma ditulis menggunakan bahasa manusia biasa.
+</p>
+
+<pre><code>1. Masukkan nilai sisi.
+2. Hitung sisi × sisi.
+3. Tampilkan hasil luas.</code></pre>
+
+<h3>Pseudocode</h3>
+
+<p>
+Pseudocode adalah penulisan algoritma dengan struktur yang menyerupai
+kode program tetapi tidak terikat bahasa pemrograman tertentu.
+</p>
+
+<pre><code>BEGIN
+
+INPUT sisi
+
+luas ← sisi × sisi
+
+OUTPUT luas
+
+END</code></pre>
+
+<h3>Flowchart</h3>
+
+<p>
+Flowchart adalah representasi algoritma dalam bentuk diagram.
+</p>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>Oval</h3>
+<p>Start / End</p>
+</div>
+
+<div class="card">
+<h3>Persegi panjang</h3>
+<p>Process</p>
+</div>
+
+<div class="card">
+<h3>Jajar genjang</h3>
+<p>Input / Output</p>
+</div>
+
+<div class="card">
+<h3>Belah ketupat</h3>
+<p>Decision / Percabangan</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- STRUCTURE -->
+
+<section id="structure">
+
+<h2>5. Struktur Dasar Algoritma</h2>
+
+<h3>A. Sekuensial</h3>
+
+<p>
+Instruksi dijalankan secara berurutan.
+</p>
+
+<pre><code>Mulai
+↓
+Bangun
+↓
+Mandi
+↓
+Sarapan
+↓
+Sekolah
+↓
+Selesai</code></pre>
+
+<h3>B. Percabangan</h3>
+
+<p>
+Algoritma memilih tindakan berdasarkan kondisi.
+</p>
+
+<pre><code>IF nilai >= 75 THEN
+    OUTPUT "Lulus"
+ELSE
+    OUTPUT "Remedial"
+END IF</code></pre>
+
+<h3>Jenis percabangan</h3>
+
+<ul>
+<li>IF</li>
+<li>IF ELSE</li>
+<li>Nested IF</li>
+<li>Switch Case</li>
+</ul>
+
+<h3>C. Perulangan</h3>
+
+<p>
+Instruksi dijalankan berulang kali.
+</p>
+
+<h4>For</h4>
+
+<pre><code>FOR i = 1 TO 10
+    OUTPUT i
+END FOR</code></pre>
+
+<h4>While</h4>
+
+<pre><code>WHILE kondisi = benar
+    lakukan proses
+END WHILE</code></pre>
+
+<h4>Do While</h4>
+
+<pre><code>DO
+    lakukan proses
+WHILE kondisi = benar</code></pre>
+
+</section>
+
+<!-- PROGRAMMING -->
+
+<section id="programming">
+
+<h2>6. Elemen Dasar Pemrograman</h2>
+
+<h3>Variabel</h3>
+
+<p>
+Tempat menyimpan data yang nilainya dapat berubah.
+</p>
+
+<pre><code>umur = 16
+nama = "Dado"</code></pre>
+
+<h3>Konstanta</h3>
+
+<p>
+Nilai yang ditetapkan dan tidak berubah selama program berjalan.
+</p>
+
+<h3>Tipe Data</h3>
+
+<ul>
+<li>Integer → bilangan bulat</li>
+<li>Float → bilangan desimal</li>
+<li>Char → satu karakter</li>
+<li>String → teks</li>
+<li>Boolean → true / false</li>
+</ul>
+
+<h3>Operator</h3>
+
+<table>
+<tr>
+<th>Jenis</th>
+<th>Contoh</th>
+</tr>
+
+<tr>
+<td>Aritmatika</td>
+<td>+ - × ÷ %</td>
+</tr>
+
+<tr>
+<td>Perbandingan</td>
+<td>&gt; &lt; == != &gt;= &lt;=</td>
+</tr>
+
+<tr>
+<td>Logika</td>
+<td>AND, OR, NOT</td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- DATA -->
+
+<section id="data">
+
+<h2>7. Struktur Data Dasar</h2>
+
+<h3>Array</h3>
+
+<p>
+Kumpulan data dengan tipe yang sama dan disimpan dalam struktur
+terindeks.
+</p>
+
+<pre><code>nilai = [80, 90, 75, 88, 95]</code></pre>
+
+<h3>String</h3>
+
+<p>
+Kumpulan karakter yang membentuk teks.
+</p>
+
+<h3>Stack</h3>
+
+<p>
+Menggunakan prinsip <strong>LIFO</strong>:
+Last In, First Out.
+</p>
+
+<pre><code>Masuk:
+A
+B
+C
+
+Keluar:
+C
+B
+A</code></pre>
+
+<h3>Queue</h3>
+
+<p>
+Menggunakan prinsip <strong>FIFO</strong>:
+First In, First Out.
+</p>
+
+<pre><code>Masuk:
+A
+B
+C
+
+Keluar:
+A
+B
+C</code></pre>
+
+<h3>Struct / Record</h3>
+
+<p>
+Menggabungkan beberapa jenis data dalam satu struktur.
+</p>
+
+</section>
+
+<!-- FUNCTION -->
+
+<section id="function">
+
+<h2>8. Fungsi dan Prosedur</h2>
+
+<h3>Fungsi</h3>
+
+<p>
+Blok instruksi yang dapat menerima input dan menghasilkan nilai.
+</p>
+
+<pre><code>fungsi luas(sisi):
+    return sisi × sisi</code></pre>
+
+<h3>Prosedur</h3>
+
+<p>
+Blok instruksi yang menjalankan tugas tertentu.
+</p>
+
+<pre><code>prosedur cetakData():
+    tampilkan data</code></pre>
+
+</section>
+
+<!-- BRUTE FORCE -->
+
+<section id="bruteforce">
+
+<h2>9. Paradigma Brute Force</h2>
+
+<div class="card paradigm">
+
+<h3>Pengertian</h3>
+
+<p>
+Brute Force menyelesaikan masalah dengan mencoba semua kemungkinan
+solusi yang relevan sampai menemukan solusi.
+</p>
+
+</div>
+
+<h3>Konsep dasar</h3>
+
+<ul>
+<li>Menghasilkan kemungkinan solusi.</li>
+<li>Menguji setiap kemungkinan.</li>
+<li>Memeriksa apakah solusi memenuhi syarat.</li>
+<li>Memilih solusi yang sesuai.</li>
+<li>Jika mencari solusi terbaik, bandingkan semua kandidat.</li>
+</ul>
+
+<h3>Contoh Linear Search</h3>
+
+<pre><code>Data:
+3 9 2 7 5 1
+
+Cari:
+7
+
+3 → bukan
+9 → bukan
+2 → bukan
+7 → KETEMU</code></pre>
+
+<h3>Kelebihan</h3>
+
+<ul>
+<li>Mudah dipahami.</li>
+<li>Mudah dibuat.</li>
+<li>Tidak membutuhkan strategi rumit.</li>
+<li>Dapat digunakan sebagai solusi awal.</li>
+</ul>
+
+<h3>Kekurangan</h3>
+
+<ul>
+<li>Dapat sangat lambat.</li>
+<li>Jumlah kemungkinan dapat meningkat sangat cepat.</li>
+<li>Tidak efisien untuk masalah besar.</li>
+</ul>
+
+<h3>Contoh algoritma</h3>
+
+<ul>
+<li>Linear Search</li>
+<li>Bubble Sort</li>
+<li>Selection Sort</li>
+<li>Exhaustive Search</li>
+<li>Permutation Search</li>
+</ul>
+
+</section>
+
+<!-- DIVIDE -->
+
+<section id="divide">
+
+<h2>10. Paradigma Divide and Conquer</h2>
+
+<p>
+Divide and Conquer memecah masalah besar menjadi masalah yang lebih
+kecil, menyelesaikan bagian tersebut, lalu menggabungkan hasilnya.
+</p>
+
+<h3>Tiga tahap</h3>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>1. Divide</h3>
+<p>Membagi masalah menjadi submasalah.</p>
+</div>
+
+<div class="card">
+<h3>2. Conquer</h3>
+<p>Menyelesaikan submasalah.</p>
+</div>
+
+<div class="card">
+<h3>3. Combine</h3>
+<p>Menggabungkan hasil submasalah.</p>
+</div>
+
+</div>
+
+<h3>Contoh Merge Sort</h3>
+
+<pre><code>8 3 5 1 9 2
+
+        ↓
+
+8 3 5    1 9 2
+
+        ↓
+
+8  3 5  1  9 2
+
+        ↓
+
+8  3  5  1  9  2
+
+        ↓
+
+3 5 8    1 2 9
+
+        ↓
+
+1 2 3 5 8 9</code></pre>
+
+<h3>Kelebihan</h3>
+
+<ul>
+<li>Efisien untuk banyak masalah besar.</li>
+<li>Masalah kompleks menjadi lebih kecil.</li>
+<li>Cocok untuk pengolahan data besar.</li>
+</ul>
+
+<h3>Kekurangan</h3>
+
+<ul>
+<li>Dapat membutuhkan memori tambahan.</li>
+<li>Sering menggunakan rekursi.</li>
+<li>Tidak semua masalah cocok.</li>
+</ul>
+
+<h3>Contoh algoritma</h3>
+
+<ul>
+<li>Merge Sort</li>
+<li>Quick Sort</li>
+<li>Binary Search</li>
+<li>Karatsuba Multiplication</li>
+</ul>
+
+</section>
+
+<!-- GREEDY -->
+
+<section id="greedy">
+
+<h2>11. Paradigma Greedy</h2>
+
+<p>
+Greedy memilih keputusan yang dianggap paling baik pada setiap
+langkah berdasarkan kondisi saat itu.
+</p>
+
+<div class="info">
+<strong>Prinsip:</strong>
+pilihan lokal terbaik → berharap menghasilkan solusi global optimal.
+</div>
+
+<h3>Konsep dasar</h3>
+
+<ul>
+<li>Candidate Set</li>
+<li>Selection</li>
+<li>Feasibility</li>
+<li>Objective</li>
+<li>Solution</li>
+</ul>
+
+<h3>Contoh</h3>
+
+<p>
+Target uang kembalian Rp18.000 dengan pecahan tertentu:
+</p>
+
+<pre><code>10.000
+5.000
+2.000
+1.000
+
+10.000 + 5.000 + 2.000 + 1.000
+= 18.000</code></pre>
+
+<h3>Penting</h3>
+
+<div class="warning">
+Greedy tidak selalu menghasilkan solusi optimal.
+Pilihan terbaik saat ini belum tentu menghasilkan hasil terbaik
+secara keseluruhan.
+</div>
+
+<h3>Contoh algoritma</h3>
+
+<ul>
+<li>Kruskal</li>
+<li>Prim</li>
+<li>Huffman Coding</li>
+<li>Activity Selection</li>
+<li>Fractional Knapsack</li>
+<li>Dijkstra dalam kondisi yang sesuai</li>
+</ul>
+
+</section>
+
+<!-- DP -->
+
+<section id="dp">
+
+<h2>12. Dynamic Programming</h2>
+
+<p>
+Dynamic Programming menyelesaikan masalah dengan membagi masalah
+menjadi submasalah dan menyimpan hasil submasalah tersebut agar
+tidak dihitung berulang.
+</p>
+
+<div class="success">
+<strong>Konsep:</strong>
+Solve → Store → Reuse
+</div>
+
+<h3>Overlapping Subproblems</h3>
+
+<p>
